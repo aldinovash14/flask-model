@@ -69,7 +69,7 @@ def predict():
 
     # Melakukan prediksi
     prediction = model.predict(input_data)
-    prediction_proba = float(model.prediction_proba(input_data))
+    prediction_proba = model.prediction_proba(input_data)
 
     # Mengambil hasil prediksi
     result = float(prediction[0])
