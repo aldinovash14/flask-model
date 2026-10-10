@@ -68,18 +68,13 @@ def predict():
     input_data = np.array([features])
 
     # Melakukan prediksi
-    prediction = model.predict(input_data)[0]
-    probabilities = model.predict_proba(input_data)[0]
+    prediction = model.predict(input_data)
+
+    # Mengambil hasil prediksi
+    result = float(prediction[0])
 
     return jsonify({
-        "prediction": int(prediction),
-        "prediction_proba": {
-            str(label): float(probability)
-            for label, probability in zip(
-                model.classes_,
-                probabilities
-            )
-        }
+        "prediction": round(result, 2)
     })
 
 if __name__ == "__main__":
