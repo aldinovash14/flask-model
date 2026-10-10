@@ -69,12 +69,15 @@ def predict():
 
     # Melakukan prediksi
     prediction = model.predict(input_data)
+    prediction_proba = float(model.prediction_proba(input_data))
 
     # Mengambil hasil prediksi
     result = float(prediction[0])
+    result_proba = float(round(prediction_proba[0][1],4))
 
     return jsonify({
-        "prediction": round(result, 2)
+        "prediction": round(result, 2),
+        "prediction_proba": result_proba
     })
 
 if __name__ == "__main__":
